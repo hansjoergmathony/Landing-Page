@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GuitarFlow - Your Digital Songbook</title>
+  <link rel="icon" type="image/png" href="images/guitarflow-icon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'dark-bg':     '#121212',
+            'dark-card':   '#1E1E1E',
+            'dark-border': '#2A2A2A',
+            'electric':    '#1E90FF',
+            'electric-hover': '#4AABFF',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #121212; }
+    .phone-mockup {
+      width: 220px;
+      height: 440px;
+      border: 3px solid #2A2A2A;
+      border-radius: 36px;
+      background: #1E1E1E;
+      position: relative;
+      box-shadow: 0 0 0 6px #181818, 0 30px 80px rgba(30,144,255,0.15);
+    }
+    .phone-mockup::before {
+      content: '';
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 6px;
+      background: #2A2A2A;
+      border-radius: 9999px;
+    }
+    .phone-mockup::after {
+      content: '';
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 4px;
+      background: #2A2A2A;
+      border-radius: 9999px;
+    }
+    .phone-screen {
+      position: absolute;
+      inset: 36px 10px;
+      border-radius: 20px;
+      background: linear-gradient(160deg, #1a2740 0%, #121212 60%, #121212 100%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .electric-glow {
+      box-shadow: 0 0 20px rgba(30,144,255,0.35);
+    }
+  </style>
+</head>
+<body class="font-sans text-white antialiased">
+
+  <!-- NAVBAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/80 backdrop-blur-md border-b border-dark-border">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <img src="images/guitarflow-icon.png" alt="GuitarFlow icon" class="w-8 h-8 rounded-xl object-cover border border-electric/40" />
+        <span class="text-lg font-bold tracking-tight">Guitar<span class="text-electric">Flow</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+        <a href="#features" class="hover:text-white transition-colors">Features</a>
+        <a href="#" class="hover:text-white transition-colors">Pricing</a>
+        <a href="#" class="hover:text-white transition-colors">Blog</a>
+      </nav>
+      <a href="#" class="hidden md:inline-flex items-center gap-2 bg-electric hover:bg-electric-hover text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors electric-glow">
+        Download App
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="min-h-screen flex items-center pt-20 pb-16 px-6">
+      <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+        <!-- Left: Copy + CTAs -->
+        <div class="flex flex-col gap-8">
+          <div class="flex flex-col gap-4">
+            <span class="inline-flex self-start items-center gap-2 bg-electric/10 border border-electric/20 text-electric text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest">
+              New in Version 2.0
+            </span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+              Your digital<br />
+              <span class="text-electric">Songbook</span>
+            </h1>
+            <p class="text-gray-400 text-lg leading-relaxed max-w-md">
+              Import songs, learn tabs, and keep track of your progress - all in one app.
+            </p>
+          </div>
+
+          <!-- App Store Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#"
+               class="flex items-center gap-3 bg-dark-card hover:bg-dark-border border border-dark-border hover:border-electric/40 text-white px-5 py-3 rounded-2xl transition-all group"
+               aria-label="Download on the App Store">
+              <svg class="w-8 h-8 flex-shrink-0 text-gray-300 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+              </svg>
+              <div class="flex flex-col leading-tight">
+                <span class="text-xs text-gray-400">Download on the</span>
+                <span class="text-sm font-semibold">App Store</span>
+              </div>
+            </a>
+
+            <a href="#"
+               class="flex items-center gap-3 bg-dark-card hover:bg-dark-border border border-dark-border hover:border-electric/40 text-white px-5 py-3 rounded-2xl transition-all group"
+               aria-label="Get it on Google Play">
+              <svg class="w-8 h-8 flex-shrink-0 text-gray-300 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M3.18 23.76c.3.17.64.24.99.2L15.77 12 12 8.23 3.18 23.76zM20.47 10.55l-2.79-1.6-4.03 3.67 4.03 3.67 2.81-1.62c.8-.46.8-1.66-.02-2.12zM2.01 1.05C1.69 1.4 1.5 1.93 1.5 2.62v18.74c0 .69.19 1.22.51 1.57L2.1 23l10.44-10.44v-.25L2.1 1.87l-.09.18zM15.77 12L4.17.29c-.36-.04-.7.03-1 .21L15.77 12z"/>
+              </svg>
+              <div class="flex flex-col leading-tight">
+                <span class="text-xs text-gray-400">Get it on</span>
+                <span class="text-sm font-semibold">Google Play</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Social proof -->
+          <div class="flex items-center gap-3 text-sm text-gray-500">
+            <div class="flex -space-x-2">
+              <div class="w-7 h-7 rounded-full bg-electric/30 border-2 border-dark-bg flex items-center justify-center text-xs font-bold text-electric">A</div>
+              <div class="w-7 h-7 rounded-full bg-purple-500/30 border-2 border-dark-bg flex items-center justify-center text-xs font-bold text-purple-400">M</div>
+              <div class="w-7 h-7 rounded-full bg-green-500/30 border-2 border-dark-bg flex items-center justify-center text-xs font-bold text-green-400">J</div>
+            </div>
+            <span>Over <strong class="text-white">10,000</strong> guitarists use GuitarFlow</span>
+          </div>
+        </div>
+
+        <!-- Right: iPhone Mockup -->
+        <div class="flex justify-center md:justify-end">
+          <div class="relative">
+            <div class="absolute inset-0 blur-3xl bg-electric/10 rounded-full scale-75 translate-y-8"></div>
+            <div class="phone-mockup relative z-10">
+              <div class="phone-screen">
+                <div class="w-full px-4 flex flex-col gap-2">
+                  <div class="text-[9px] text-gray-500 font-medium uppercase tracking-widest text-center mb-1">GuitarFlow</div>
+
+                  <div class="bg-dark-bg/60 rounded-lg px-3 py-2 flex items-center gap-2 border border-dark-border">
+                    <div class="w-5 h-5 rounded bg-electric/20 flex-shrink-0 flex items-center justify-center">
+                      <div class="w-2 h-2 rounded-sm bg-electric"></div>
+                    </div>
+                    <div class="flex flex-col gap-0.5">
+                      <div class="w-20 h-1.5 bg-gray-600 rounded-full"></div>
+                      <div class="w-12 h-1 bg-gray-700 rounded-full"></div>
+                    </div>
+                    <div class="ml-auto w-8 h-1.5 bg-green-500/50 rounded-full"></div>
+                  </div>
+
+                  <div class="bg-dark-bg/60 rounded-lg px-3 py-2 flex items-center gap-2 border border-electric/30">
+                    <div class="w-5 h-5 rounded bg-electric/20 flex-shrink-0 flex items-center justify-center">
+                      <div class="w-2 h-2 rounded-sm bg-electric"></div>
+                    </div>
+                    <div class="flex flex-col gap-0.5">
+                      <div class="w-24 h-1.5 bg-gray-500 rounded-full"></div>
+                      <div class="w-16 h-1 bg-gray-700 rounded-full"></div>
+                    </div>
+                    <div class="ml-auto w-8 h-1.5 bg-electric/50 rounded-full"></div>
+                  </div>
+
+                  <div class="bg-dark-bg/60 rounded-lg px-3 py-2 flex items-center gap-2 border border-dark-border">
+                    <div class="w-5 h-5 rounded bg-yellow-500/20 flex-shrink-0 flex items-center justify-center">
+                      <div class="w-2 h-2 rounded-sm bg-yellow-400"></div>
+                    </div>
+                    <div class="flex flex-col gap-0.5">
+                      <div class="w-16 h-1.5 bg-gray-600 rounded-full"></div>
+                      <div class="w-10 h-1 bg-gray-700 rounded-full"></div>
+                    </div>
+                    <div class="ml-auto w-8 h-1.5 bg-yellow-500/40 rounded-full"></div>
+                  </div>
+
+                  <div class="bg-dark-bg/60 rounded-lg px-3 py-2 flex items-center gap-2 border border-dark-border">
+                    <div class="w-5 h-5 rounded bg-gray-700 flex-shrink-0"></div>
+                    <div class="flex flex-col gap-0.5">
+                      <div class="w-16 h-1.5 bg-gray-700 rounded-full"></div>
+                      <div class="w-10 h-1 bg-gray-800 rounded-full"></div>
+                    </div>
+                    <div class="ml-auto w-8 h-1.5 bg-gray-700/50 rounded-full"></div>
+                  </div>
+
+                  <div class="mt-1 bg-dark-bg/80 rounded-lg p-2 border border-dark-border">
+                    <div class="flex flex-col gap-0.5">
+                      <div class="h-px bg-gray-700"></div>
+                      <div class="h-px bg-gray-700"></div>
+                      <div class="h-px bg-gray-700"></div>
+                      <div class="h-px bg-gray-700"></div>
+                      <div class="h-px bg-gray-700"></div>
+                      <div class="h-px bg-gray-700"></div>
+                    </div>
+                    <div class="text-[7px] text-electric/60 text-center mt-1">Tab Preview</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 flex flex-col items-center gap-3">
+          <span class="text-electric text-xs font-semibold uppercase tracking-widest">Features</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Everything you need to learn
+          </h2>
+          <p class="text-gray-400 text-lg max-w-xl">
+            GuitarFlow brings YouTube, tabs, and your learning progress together in one streamlined app.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <!-- Card 1: YouTube Import -->
+          <div class="bg-dark-card border border-dark-border hover:border-electric/40 rounded-2xl p-6 flex flex-col gap-5 transition-all hover:shadow-[0_0_30px_rgba(30,144,255,0.08)] group">
+            <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+              <svg class="w-6 h-6 text-red-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.56 3.5 12 3.5 12 3.5s-7.56 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.02 0 12 0 12s0 3.98.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.44 20.5 12 20.5 12 20.5s7.56 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.98 24 12 24 12s0-3.98-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/>
+              </svg>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-bold">Automatic YouTube Import</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Just paste a YouTube link - GuitarFlow detects the song automatically and adds it to your songbook.
+              </p>
+            </div>
+            <div class="mt-auto flex items-center gap-1 text-electric text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+              Learn more
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card 2: Integrated Tabs -->
+          <div class="bg-dark-card border border-dark-border hover:border-electric/40 rounded-2xl p-6 flex flex-col gap-5 transition-all hover:shadow-[0_0_30px_rgba(30,144,255,0.08)] group">
+            <div class="w-12 h-12 rounded-xl bg-electric/10 border border-electric/20 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+              <svg class="w-6 h-6 text-electric" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+                <line x1="3" y1="14" x2="21" y2="14"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+                <circle cx="8" cy="6" r="2" fill="currentColor" stroke="none"/>
+                <circle cx="14" cy="10" r="2" fill="currentColor" stroke="none"/>
+                <circle cx="10" cy="14" r="2" fill="currentColor" stroke="none"/>
+                <circle cx="16" cy="18" r="2" fill="currentColor" stroke="none"/>
+              </svg>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-bold">Integrated Tabs</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                View guitar tabs right next to the video - synced and scrollable so you never lose track.
+              </p>
+            </div>
+            <div class="mt-auto flex items-center gap-1 text-electric text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+              Learn more
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card 3: Learning Status Filter -->
+          <div class="bg-dark-card border border-dark-border hover:border-electric/40 rounded-2xl p-6 flex flex-col gap-5 transition-all hover:shadow-[0_0_30px_rgba(30,144,255,0.08)] group">
+            <div class="w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+              <svg class="w-6 h-6 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h18M6 6V4a1 1 0 011-1h10a1 1 0 011 1v2M8 11h8M10 16h4"/>
+                <circle cx="12" cy="18" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-bold">Learning Status Filter</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Mark songs as "New," "In Progress," or "Learned" and filter your songbook by progress.
+              </p>
+            </div>
+            <div class="flex gap-2 flex-wrap">
+              <span class="text-xs px-2 py-0.5 rounded-full bg-gray-700/50 text-gray-400 border border-gray-600/30">New</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-electric/10 text-electric border border-electric/20">In Progress</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20">Learned</span>
+            </div>
+            <div class="mt-auto flex items-center gap-1 text-electric text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+              Learn more
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="py-20 px-6">
+      <div class="max-w-3xl mx-auto text-center flex flex-col items-center gap-6">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+          Ready to take your playing to the next level?
+        </h2>
+        <p class="text-gray-400 text-lg">
+          Start for free - no account required.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#" class="bg-electric hover:bg-electric-hover text-white font-semibold px-8 py-3 rounded-2xl transition-colors electric-glow">
+            Download on the App Store
+          </a>
+          <a href="#" class="bg-dark-card hover:bg-dark-border border border-dark-border text-white font-semibold px-8 py-3 rounded-2xl transition-colors">
+            Get it on Google Play
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-border py-8 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+      <div class="flex items-center gap-2">
+        <img src="images/guitarflow-icon.png" alt="GuitarFlow icon" class="w-6 h-6 rounded-lg object-cover border border-electric/30" />
+        <span class="font-semibold text-gray-400">GuitarFlow</span>
+      </div>
+      <span>© 2026 GuitarFlow. All rights reserved.</span>
+      <div class="flex gap-5">
+        <a href="#" class="hover:text-white transition-colors">Privacy</a>
+        <a href="#" class="hover:text-white transition-colors">Legal Notice</a>
+        <a href="#" class="hover:text-white transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
